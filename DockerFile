@@ -1,0 +1,18 @@
+# Docker File for the docx Document Extractor
+# Default Exposed port is 5003 and app runs on the same
+# Please change accordingly
+
+FROM ubuntu:focal
+ARG DEBIAN_FRONTEND=noninteractive
+WORKDIR /app
+RUN apt-get -y update
+RUN apt-get -y upgrade
+RUN apt-get -y install python3-pip
+RUN apt-get install -y ffmpeg libsm6 libxext6  
+COPY requirements.txt .
+RUN pip3 install -r requirements.txt 
+COPY . .
+
+EXPOSE 5000
+
+ENTRYPOINT [ "uvicorn" , "main_api:app", "--proxy-headers", "--host", "0.0.0.0", "--port", "5000" ]
