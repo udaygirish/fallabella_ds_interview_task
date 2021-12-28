@@ -9,6 +9,7 @@ import uvicorn
 from lib import data_loader, model_creator
 import tensorflow as tf
 import numpy as np
+import time
 
 app = fastapi.FastAPI()
 
@@ -32,15 +33,17 @@ def entry_page():
     return "Welcome to the base Page of Sentiment Classification API"
 
 @app.post("/predict_sentiment/")
-def predict_sentiment(token_id:  str= "T_0"):
-    
-    X_infer = dataloader.data_process_loader_keras_sequence(method = "inference", data_id = token_id)
+def predict_sentiment(review_id:  str= "T_0"):
+    t1 = time.time()
+    X_infer = dataloader.data_process_loader_keras_sequence(method = "inference", data_id = review_id)
     print(len(X_train), len(X_infer))
 
     y_pred_output = model.predict(np.array(X_infer))
 
     y_pred_output = ["negative" if i>0.5 else "positive" for i in y_pred_output]
+    t2 = time.time()
 
+    print("Inference_Time:{}".format(t2-t1))
     return y_pred_output[0]
 
 if __name__ == "__main__":

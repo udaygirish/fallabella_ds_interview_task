@@ -19,7 +19,7 @@ https://wandb.ai/udaygirish/fallabella_sentiment_classification?workspace=user-u
 Please hit the API endpoint at the given address and go to /docs address to test it.
 Total path: http://<external_ip>:5005/docs 
             Check predict_sentiment
-            Otherwise use post request with the token_id (review_id) on http://<external_ip>:5005/predict_sentiment 
+            Otherwise use post request with the review_id on http://<external_ip>:5005/predict_sentiment 
 
 
 
