@@ -34,17 +34,21 @@ def entry_page():
 
 @app.post("/predict_sentiment/")
 def predict_sentiment(review_id:  str= "T_0"):
-    t1 = time.time()
-    X_infer = dataloader.data_process_loader_keras_sequence(method = "inference", data_id = review_id)
-    print(len(X_train), len(X_infer))
+    try:
+        t1 = time.time()
+        X_infer = dataloader.data_process_loader_keras_sequence(method = "inference", data_id = review_id)
+        print(len(X_train), len(X_infer))
 
-    y_pred_output = model.predict(np.array(X_infer))
+        y_pred_output = model.predict(np.array(X_infer))
 
-    y_pred_output = ["negative" if i>0.5 else "positive" for i in y_pred_output]
-    t2 = time.time()
+        y_pred_output = ["negative" if i>0.5 else "positive" for i in y_pred_output]
+        t2 = time.time()
 
-    print("Inference_Time:{}".format(t2-t1))
-    return y_pred_output[0]
+        print("Inference_Time:{}".format(t2-t1))
+        return y_pred_output[0]
+    except Exception as e:
+        print("Exception is :{}".format(e))
+        return "The review_id does not exist in the test set. Please verify"
 
 if __name__ == "__main__":
     uvicorn.run('main_api:app', host = '0.0.0.0', port = 5005, proxy_headers = True, reload=True)
