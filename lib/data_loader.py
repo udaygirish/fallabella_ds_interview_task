@@ -27,7 +27,7 @@ class CDataLoader():
         self.df_train =  pd.read_csv(self.train_path)
         self.df_test_main =  pd.read_csv(self.test_path)
         self.df_train = self.df_train.replace({'sentiment' : { 'positive' : 0, 'negative' : 1 }})
-        self.df_test_main = self.df_test.replace({'sentiment' : { 'positive' : 0, 'negative' : 1 }})
+        self.df_test_main = self.df_test_main.replace({'sentiment' : { 'positive' : 0, 'negative' : 1 }})
         
 
     def data_visualiser(self):
@@ -45,8 +45,10 @@ class CDataLoader():
             for sen in sentences:
                 X_total.append(self.preprocess_text(sen))
             y_total = []
-            y = self.df_train['sentiment'].tolist()
+            print(len(X_total))
+            y_total = self.df_train['sentiment'].tolist()
             X_train, X_test, y_train, y_test = train_test_split(X_total, y_total, test_size=0.20, random_state= 12)
+            
             self.tokenizer.fit_on_texts(X_train)
             X_train = self.text_tokenizer(X_train)
             X_test = self.text_tokenizer(X_test)
@@ -71,10 +73,14 @@ class CDataLoader():
             X_infer = self.text_tokenizer(X_infer)
             X_infer = sequence.pad_sequences(X_infer, maxlen = self.max_review_length)
             return X_infer
+
+        else:
+            print("Please check the method parameter - Acceptable Values are train , test and inference")
+            pass
   
 
-    def data_process_loader_tf_idf(self, method = "train"):
-        if method == "train"
+    def data_process_loader_tf_idf(self, method = "train", data_id = ''):
+        if method == "train":
             X_total = []
             sentences = list(self.df_train['review'])
             for sen in sentences:
@@ -95,6 +101,18 @@ class CDataLoader():
             X_test = self.vectorizer.transform(X_test).todense()
             return X_test, y_test
 
+        elif method == "inference":
+            X_infer = []
+            sentences  =  list(self.df_test_main.loc[self.df_test_main['review_id']== data_id, 'review'])
+            for sen in sentences:
+                X_infer.append(self.preprocess_text(sen))
+            X_infer = self.vectorizer.transform(X_infer).todense()
+            return X_infer
+
+        else:
+            print("Please check the method parameter - Acceptable Values are train , test and inference")
+            pass
+
 
     def preprocess_text(self,sen):
         sentence = self.remove_tags(sen)
@@ -108,7 +126,8 @@ class CDataLoader():
         return TAG_RE.sub('', text)
 
     def text_tokenizer(self,data):
-        tokenized_data = self.tokenizer.texts_to_sequence(data)
+        tokenized_data = self.tokenizer.texts_to_sequences(data)
+        return tokenized_data
 
 
 

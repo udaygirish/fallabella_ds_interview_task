@@ -1,7 +1,7 @@
 tensorflow
 keras
 wandb
-sickit-learn
+scikit-learn
 nltk
 pandas
 numpy

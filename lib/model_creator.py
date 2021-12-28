@@ -1,20 +1,19 @@
-import tensorflow as tf
-from tf.keras.models import Sequential
-from tf.keras.layers import Dense,Embedding,Conv1D,MaxPooling1D,LSTM,Bidirectional
-from tf.keras.layers import Dropout,Flatten,BatchNormalization,LeakyReLU
-from tf.keras.layers import LSTM
-from tf.keras.layers import RNN
-from tf.keras.callbacks import ModelCheckpoint
-from tf.keras.utils import np_utils
-from tf.keras import *
-import tf.keras as keras
-from tf.keras.preprocessing import sequence
+import tensorflow as tensorflow
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense,Embedding,Conv1D,MaxPooling1D,LSTM,Bidirectional
+from tensorflow.keras.layers import Dropout,Flatten,BatchNormalization,LeakyReLU
+from tensorflow.keras.layers import LSTM
+from tensorflow.keras.layers import RNN
+from tensorflow.keras.callbacks import ModelCheckpoint
+from tensorflow.keras import *
+import tensorflow.keras as keras
+from tensorflow.keras.preprocessing import sequence
 from nltk.corpus import stopwords
-from tf.keras.preprocessing.text import one_hot
-from tf.keras.preprocessing.sequence import pad_sequences
-from tf.keras.layers.core import Activation, Dropout, Dense
-from tf.keras.layers import GlobalMaxPooling1D,MaxPool1D
-from tf.keras.layers.embeddings import Embedding
+from tensorflow.keras.preprocessing.text import one_hot
+from tensorflow.keras.preprocessing.sequence import pad_sequences
+from tensorflow.keras.layers import Activation, Dropout, Dense
+from tensorflow.keras.layers import GlobalMaxPooling1D,MaxPool1D
+from tensorflow.keras.layers import Embedding
 from sklearn.linear_model import LogisticRegression
 import pickle
 
