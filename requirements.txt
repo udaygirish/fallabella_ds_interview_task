@@ -7,3 +7,6 @@ pandas
 numpy
 matplotlib
 seaborn
+fastapi
+uvicorn
+starlette
