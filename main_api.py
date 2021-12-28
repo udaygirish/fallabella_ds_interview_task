@@ -41,7 +41,7 @@ def predict_sentiment(token_id:  str= "T_0"):
 
     y_pred_output = ["negative" if i>0.5 else "positive" for i in y_pred_output]
 
-    return y_pred_output
+    return y_pred_output[0]
 
 if __name__ == "__main__":
     uvicorn.run('main_api:app', host = '0.0.0.0', port = 5005, proxy_headers = True, reload=True)
