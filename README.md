@@ -6,9 +6,9 @@ https://wandb.ai/udaygirish/fallabella_sentiment_classification?workspace=user-u
 
 #### Current Accuracy Metrics
 1. Current Best Model Weights -
-    Train - Around 98 percent precision
-    Test - Around 83 percent 
-    Test Confusion Matrix Values - [ [1652,367], [303,1678]]
+    * Train - Around 98 percent precision
+    * Test - Around 83 percent 
+    * Test Confusion Matrix Values - [ [1652,367], [303,1678]]
 
 
 #### Current Code also support Train using custom datasets and custom models can be defined in Model_Creator.py
@@ -16,10 +16,10 @@ https://wandb.ai/udaygirish/fallabella_sentiment_classification?workspace=user-u
 
 #### API Endpoint 
  
-Please hit the API endpoint at the given address and go to /docs address to test it.
-Total path: http://<external_ip>:5005/docs 
-            Check predict_sentiment
-            Otherwise use post request with the review_id on http://<external_ip>:5005/predict_sentiment 
+1. Please hit the API endpoint at the given address and go to /docs address to test it.
+2. To use API/test API: 
+            * In Check http://<external_ip>:5005/docs use the try it out in predict_sentiment
+            * Otherwise use post request with the review_id on http://<external_ip>:5005/predict_sentiment 
 
 
 
