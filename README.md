@@ -1,5 +1,5 @@
 # fallabella_ds_interview_task
-Interview Task Submission for Fallabella Data Scientist Postion
+Interview Task Submission for Fallabella Data Scientist Position
 
 #### Please follow the below link to access Weights & Biases Dashboard
 https://wandb.ai/udaygirish/fallabella_sentiment_classification?workspace=user-udaygirish
